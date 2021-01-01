@@ -5,7 +5,7 @@
 </p>
 
 
-*vscode-ts-getset* can generate getter and setter for a TypeScript class. It works based on AST (TypeScript Complier API) instead of Regular Expressions.
+*vscode-ts-getset* can generate getter and setter for a TypeScript class. It works based on AST (TypeScript Compiler API) instead of Regular Expressions.
 
 <p align="center">
   <img src="./demo.gif">
