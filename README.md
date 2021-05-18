@@ -28,7 +28,6 @@
 
 Contributions are strongly welcomed!
 
-- [ ] support local class declaration
 - [ ] use AST instead of regex to get class name
 
 ## License
