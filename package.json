@@ -1,8 +1,8 @@
 {
   "name": "vscode-ts-getset",
-  "displayName": "TypeScript GetSet",
-  "description": "TypeScript getter / setter generator based on AST",
-  "version": "1.0.0",
+  "displayName": "TS GetSet",
+  "description": "TypeScript getter / setter generator for Class",
+  "version": "1.1.0",
   "publisher": "z0gSh1u",
   "engines": {
     "vscode": "^1.52.0"
@@ -17,7 +17,7 @@
     "setter",
     "generator"
   ],
-  "icon": "logo.png",
+  "icon": "icon.png",
   "activationEvents": [
     "*"
   ],
@@ -26,17 +26,17 @@
     "commands": [
       {
         "command": "vscode-ts-getset.generateGet",
-        "title": "Generate Getter Only",
+        "title": "Generate Getter",
         "category": "vscode-ts-getset"
       },
       {
         "command": "vscode-ts-getset.generateSet",
-        "title": "Generate Setter Only",
+        "title": "Generate Setter",
         "category": "vscode-ts-getset"
       },
       {
         "command": "vscode-ts-getset.generateGetSet",
-        "title": "Generate Getter & Setter",
+        "title": "Generate Getter and Setter",
         "category": "vscode-ts-getset"
       }
     ]
@@ -44,24 +44,18 @@
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
     "test": "jest"
   },
   "dependencies": {
-    "typescript": "^3.8.3"
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.1",
-    "@types/node": "^13.11.0",
-    "@types/vscode": "^1.52.0",
-    "@typescript-eslint/eslint-plugin": "^2.30.0",
-    "@typescript-eslint/parser": "^2.30.0",
-    "eslint": "^6.8.0",
-    "glob": "^7.1.6",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.4.4"
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.7",
+    "@types/vscode": "^1.88.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2"
   },
   "repository": {
     "type": "git",

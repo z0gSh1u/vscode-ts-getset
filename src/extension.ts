@@ -33,7 +33,7 @@ function generate(mode: 'get' | 'set' | 'getset') {
     // find class name
     // TODO use AST instead of regex to get the class name
     const classNames = new RegExp(/class\s+(\w+)/).exec(line)
-    if (!classNames || classNames.length == 0) {
+    if (!classNames || classNames.length === 0) {
       // no matched class name
       vscode.window.showErrorMessage(
         'No class name found. Try to put the cursor on first line of class declaration.'
@@ -65,7 +65,7 @@ function generate(mode: 'get' | 'set' | 'getset') {
     // insert into source code
     const workspaceEdit = new vscode.WorkspaceEdit()
     workspaceEdit.set(editor.document.uri, [
-      vscode.TextEdit.insert(new vscode.Position(lastLine + 2, 0), finalToInsert), // TODO character
+      vscode.TextEdit.insert(new vscode.Position(lastLine + 2, 0), finalToInsert) // TODO character
     ])
     vscode.workspace.applyEdit(workspaceEdit).then(
       () => {},
@@ -74,25 +74,19 @@ function generate(mode: 'get' | 'set' | 'getset') {
 
     // done
     vscode.window.showInformationMessage('Generation finished successfully.')
-  } catch (err) {
-    vscode.window.showErrorMessage(err.message)
+  } catch (err: any) {
+    vscode.window.showErrorMessage(err?.message || 'Unknown error.')
   }
 }
 
 export function activate(context: vscode.ExtensionContext) {
   // prepare 3 commands
-  const generateGetCommand = vscode.commands.registerCommand(
-    'vscode-ts-getset.generateGet',
-    () => {
-      generate('get')
-    }
-  )
-  const generateSetCommand = vscode.commands.registerCommand(
-    'vscode-ts-getset.generateSet',
-    () => {
-      generate('set')
-    }
-  )
+  const generateGetCommand = vscode.commands.registerCommand('vscode-ts-getset.generateGet', () => {
+    generate('get')
+  })
+  const generateSetCommand = vscode.commands.registerCommand('vscode-ts-getset.generateSet', () => {
+    generate('set')
+  })
   const generateGetSetCommand = vscode.commands.registerCommand(
     'vscode-ts-getset.generateGetSet',
     () => {
