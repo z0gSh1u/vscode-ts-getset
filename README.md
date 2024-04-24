@@ -4,8 +4,7 @@
   <img src="./logo.png" width="200px" height="auto">
 </p>
 
-
-*vscode-ts-getset* can generate getter and setter for a TypeScript class. It works based on AST (TypeScript Compiler API) instead of Regular Expressions.
+_vscode-ts-getset_ can generate getter and setter for a TypeScript class. It works based on AST (TypeScript Compiler API) instead of Regular Expressions.
 
 <p align="center">
   <img src="./demo.gif">
@@ -33,4 +32,3 @@ Contributions are strongly welcomed!
 ## License
 
 MIT
-

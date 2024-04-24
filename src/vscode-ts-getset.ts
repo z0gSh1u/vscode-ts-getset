@@ -24,14 +24,17 @@ export function generate(
   // find corresponding class declaration
   const classDecls = tsSource.statements.filter(
     v =>
-      v.kind == ts.SyntaxKind.ClassDeclaration &&
-      (v as ts.ClassDeclaration)?.name?.text == className
+      v.kind === ts.SyntaxKind.ClassDeclaration &&
+      (v as ts.ClassDeclaration)?.name?.text === className
   ) as ts.ClassDeclaration[]
-  assert(classDecls.length == 1, `There are multiple or none class declarations of "${className}".`)
+  assert(
+    classDecls.length === 1,
+    `There are multiple or none class declarations of "${className}".`
+  )
   const classDecl = classDecls[0]
 
   // find all property declarations of this class
-  const allProperties = classDecl.members.filter(v => v.kind == ts.SyntaxKind.PropertyDeclaration)
+  const allProperties = classDecl.members.filter(v => v.kind === ts.SyntaxKind.PropertyDeclaration)
   assert(allProperties.length > 0, 'No properties found.')
 
   // find last line of property declarations
@@ -43,9 +46,9 @@ export function generate(
   // find all private or protected properties of it
   const ableProperties = allProperties.filter(
     v =>
-      v.kind == ts.SyntaxKind.PropertyDeclaration &&
+      ts.isPropertyDeclaration(v) &&
       v.modifiers?.some(
-        m => m.kind == ts.SyntaxKind.PrivateKeyword || m.kind == ts.SyntaxKind.ProtectedKeyword
+        m => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword
       )
   ) as ts.PropertyDeclaration[]
   assert(ableProperties.length > 0, 'No private or protected properties found.')
@@ -61,7 +64,7 @@ export function generate(
     const type = v.type ? (v.type as ts.TypeNode).getText(tsSource) : 'any'
     return {
       name, // .substring(1) to remove first underscore
-      type,
+      type
     }
   })
   myProperties.reverse()
@@ -84,6 +87,6 @@ export function generate(
 
   return {
     content: res.trim(),
-    lastLine,
+    lastLine
   }
 }

@@ -1,5 +1,5 @@
-class Person {
-  private _name: string
-  protected _sex: number
-  public phone: string
+class Foo {
+  private _bar1: string
+  protected _bar2: number
+  public bar3: any
 }

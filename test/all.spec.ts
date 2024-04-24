@@ -8,23 +8,23 @@ describe('all', () => {
     const fileName = path.join(__dirname, './test._ts')
     const fileContent = fs.readFileSync(fileName).toString()
     const source = ts.createSourceFile(fileName, fileContent, ts.ScriptTarget.Latest)
-    const content = generate(source, 'Person', 'getset').content
+    const content = generate(source, 'Foo', 'getset').content
     expect(content).toBe(
       `
-get name() {
-  return this._name
+get bar1() {
+  return this._bar1
 }
 
-set name(val: string) {
-  this._name = val
+set bar1(val: string) {
+  this._bar1 = val
 }
 
-get sex() {
-  return this._sex
+get bar2() {
+  return this._bar2
 }
 
-set sex(val: number) {
-  this._sex = val
+set bar2(val: number) {
+  this._bar2 = val
 }
       `.trim()
     )
