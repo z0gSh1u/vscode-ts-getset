@@ -1,7 +1,7 @@
 # vscode-ts-getset
 
 <p align="center">
-  <img src="./logo.png" width="200px" height="auto">
+  <img src="./icon.png" width="200px" height="auto">
 </p>
 
 _vscode-ts-getset_ can generate getter and setter for a TypeScript class. It works based on AST (TypeScript Compiler API) instead of Regular Expressions.
